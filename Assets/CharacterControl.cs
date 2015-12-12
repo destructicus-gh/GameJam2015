@@ -3,8 +3,8 @@ using System.Collections;
 
 public class CharacterControl : MonoBehaviour {
 
-    public float speed;
-    public float turnSpeed;
+    public bool isFBlocked;
+    public bool isBBlocked;
 
 
 	// Use this for initialization
@@ -15,31 +15,29 @@ public class CharacterControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
            
-	if (Input.GetKey(KeyCode.W)){
+	if (Input.GetKeyUp(KeyCode.W))
+    {
+        if (!isFBlocked)
+            this.gameObject.transform.Translate(Vector3.forward);
+    }
+    if (Input.GetKeyUp(KeyCode.S))
+    {
+        if (!isBBlocked)
+            this.gameObject.transform.Translate(Vector3.back);
+    }
+        
+		if (Input.GetKeyUp(KeyCode.A)){
 			
-			Vector3 newPosition = this.gameObject.transform.position;
-            newPosition.z += (speed * Time.deltaTime);
-			this.gameObject.transform.position = newPosition;
-			
-		}
-		if (Input.GetKey(KeyCode.S)){
-			
-			Vector3 newPosition = this.gameObject.transform.position;
-            newPosition.z -= (speed * Time.deltaTime);
-			this.gameObject.transform.position = newPosition;
-			
-		}
-		if (Input.GetKey(KeyCode.A)){
-			
-            this.gameObject.transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
+            this.gameObject.transform.Rotate(Vector3.up, 90);
 			
 		}
-		if (Input.GetKey(KeyCode.D)){
+		if (Input.GetKeyUp(KeyCode.D)){
 
-            this.gameObject.transform.Rotate(Vector3.down * turnSpeed * Time.deltaTime);
+            this.gameObject.transform.Rotate(Vector3.up, -90);
 			
 		}
 		
 	}
+
 	
 }
