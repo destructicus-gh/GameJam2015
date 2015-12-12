@@ -17,7 +17,6 @@ public class HECollider : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        print(other.gameObject);
         if (!other.CompareTag("scenery")) return;
         if (isF)
         {

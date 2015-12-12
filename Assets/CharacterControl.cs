@@ -28,16 +28,22 @@ public class CharacterControl : MonoBehaviour {
         
 		if (Input.GetKeyUp(KeyCode.A)){
 			
-            this.gameObject.transform.Rotate(Vector3.up, 90);
+            this.gameObject.transform.Rotate(Vector3.up, -90);
 			
 		}
 		if (Input.GetKeyUp(KeyCode.D)){
 
-            this.gameObject.transform.Rotate(Vector3.up, -90);
+            this.gameObject.transform.Rotate(Vector3.up, 90);
 			
 		}
 		
 	}
+
+    public void giveTransform(Transform t)
+    {
+        t.SetParent(this.transform);
+        t.localPosition += Vector3.up*2;
+    }
 
 	
 }
